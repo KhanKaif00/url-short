@@ -20,7 +20,10 @@ app.use(express.urlencoded({ extended: true }));//✅ This lets your app underst
 app.use(cookieParser()); // This lets your app read cookies sent in HTTP requests, which is useful for things like authentication.
 app.use(attachUser)
 
-app.use(cors()); // Use CORS middleware to allow cross-origin requests
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+}));
 
 app.use('/api/create',short_url)
 app.use('/api/auth',auth_routes )
